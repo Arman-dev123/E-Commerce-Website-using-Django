@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Thrifts And Threads">
+    <meta name="keywords" content="Thrifts, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thrifts | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="{% url 'home' %}"><img src="{% static 'img/TnT.webp' %}" alt="Logo" class="header__logo-img">
+                    </a></div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'shop' %}">Shop</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'shop-cart' %}">Shop Cart</a></li>
+                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'home' %}">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right">
+                    <ul class="header__right__widget">
+                        <li><a href="#" class="search-switch"><span class="icon_search"></span></a></li>
+                        <li><a href="{% url 'shop-cart' %}"><span class="icon_bag_alt"></span></a></li>
+                    </ul>
+                    <br>
+                    <div class="offcanvas__auth">
+                        {% if user_name %}
+                            <a href="#"> <b>Welcome, {{ user_name }}</b></a>
+                            <br>
+                            <a href="{% url 'logout' %}">Log Out</a>
+                        {% else %}
+                            <a href="{% url 'login' %}">Login</a>
+                            <a href="{% url 'register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<style>
+.header {
+    background-color: #f8f9fa; 
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+.header__logo-img {
+    width: 200px; 
+    height: auto; 
+}
+
+.header__menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.header__menu ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.header__menu ul li a {
+    font-size: 18px; 
+    font-weight: bold;
+    color: #333; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header__menu ul li a:hover {
+    color: #ff6f61;
+}
+
+.header__menu ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header__menu ul li:hover .dropdown {
+    display: block;
+}
+
+.header__menu ul li .dropdown li {
+    margin: 0;
+}
+
+.header__menu ul li .dropdown li a {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+}
+
+.header__menu ul li .dropdown li a:hover {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+.header__right ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.header__right ul li {
+    margin-left: 15px;
+}
+
+.header__right ul li a span {
+    font-size: 20px;
+    color: #333;
+}
+
+.header__right ul li a span:hover {
+    color: #ff6f61;
+}
+
+.offcanvas__auth a {
+    font-size: 16px;
+    margin-right: 0px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.offcanvas__auth a:hover {
+    color: #ff6f61;
+}
+
+.canvas__open i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+</style>
+<!-- Header Section End -->
+
+<!-- Categories Section Begin -->
+<section class="categories" style="background-image: url('{% static "img/abcd.jpg" %}');">
+    <div class="container text-center">
+        <!-- Overlay Text for Background -->
+        <div class="categories__overlay-text">
+            <h2>Explore Our Exclusive Categories</h2>
+            <p>Choose the perfect gear for your needs from our premium selection.</p>
+        </div>
+
+        <!-- Categories Grid -->
+        <div class="row justify-content-center align-items-center">
+            <!-- Drill Tops -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/drilltop.webp" %}');">
+                    <div class="categories__text">
+                        <h4>Drill Tops</h4>
+                        <a href="{% url 'shop' %}?category=Drill Tops">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Jerseys -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/jersey.avif" %}');">
+                    <div class="categories__text">
+                        <h4>Jerseys</h4>
+                        <a href="{% url 'shop' %}?category=Jerseys">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Trousers -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/trouser.jpg" %}');">
+                    <div class="categories__text">
+                        <h4>Trousers</h4>
+                        <a href="{% url 'shop' %}?category=Trousers">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tracksuits -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/tracksuit.jpg" %}');">
+                    <div class="categories__text">
+                        <h4>Tracksuits</h4>
+                        <a href="{% url 'shop' %}?category=tracksuits">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Casual Shirts -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/shirts.jpg" %}');">
+                    <div class="categories__text">
+                        <h4>Casual Shirts</h4>
+                        <a href="{% url 'shop' %}?category=Casual Shirts">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Football Shoes -->
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="categories__item" style="background-image: url('{% static "img/fboots.avif" %}');">
+                    <div class="categories__text">
+                        <h4>Football Shoes</h4>
+                        <a href="{% url 'shop' %}?category=Football Shoes">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.categories__item {
+    width: 150px;
+    height: 150px; 
+    background-size: cover; 
+    background-position: center; 
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.categories__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px "rgba(0, 0, 0, 0.2)";
+}
+
+.categories__text h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #b30404;
+}
+
+.categories__text a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.categories__text a:hover {
+    color: #ffd700;
+}
+
+</style>
+<!-- Categories Section End -->
+
+
+    <!-- Services Section Begin -->
+    <section class="services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-car"></i>
+                        <h6>Free Shipping</h6>
+                        <p>All over Pakistan</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-money"></i>
+                        <h6>Money Back Guarantee</h6>
+                        <p>Easy returns and exchange</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-credit-card"></i>
+                        <h6>Secure Payments</h6>
+                        <p>End-To-End Encrypted</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-headphones"></i>
+                        <h6>Customer Service</h6>
+                        <p>24/7 Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="{% url 'home' %}"><h3>Thrifts & Threads</h3></a>
+                        </div>
+                        <p>Where style meets sustainability! <br> Our online store brings you a collection of high quality jerseys alongside trending arrivals. Explore our collection today and join the movement towards a more stylish and sustainable future!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer__widget">
+                        <h6>Quick Links</h6>
+                        <ul>
+                            <li><a href="{% url 'shop' %}">Shop</a></li>
+                            <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="{% static 'contact.html' %}">Contact</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            <li><a href="{% url 'register' %}">Register</a></li>
+                            <li><a href="#">My Orders</a></li>
+                            <li><a href="#">Track Order</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .footer {
+                background-color: #2c3e50;
+                color: #ecf0f1; 
+                padding: 40px 0;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .footer .footer__logo h3 {
+                color: #ecf0f1;
+                font-size: 24px;
+                margin-bottom: 20px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            
+            .footer__logo h3:hover {
+                color: #1abc9c;
+                text-decoration: none;
+            }
+            
+            .footer__about p {
+                margin-top: 10px;
+                color: #bdc3c7;
+            }
+            
+            .footer__widget h6 {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+            
+            .footer__widget ul {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .footer__widget ul li {
+                margin-bottom: 10px;
+            }
+            
+            .footer__widget ul li a {
+                color: #bdc3c7;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .footer__widget ul li a:hover {
+                color: #1abc9c; 
+            }
+            
+            </style>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

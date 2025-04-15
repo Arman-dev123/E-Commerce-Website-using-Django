@@ -1,0 +1,270 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Thrifts And Threads">
+    <meta name="keywords" content="Thrifts, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thrifts | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+<!-- Register Section Start -->
+
+<div class="login-container">
+    <h3>Register</h3>
+    <form method="post" onsubmit="return validateForm()">
+        {% csrf_token %}
+        
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" required placeholder="Enter first name"><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" required placeholder="Enter last name"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required placeholder="Enter email"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address."><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number" required placeholder="Enter phone number"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required placeholder="Enter password"><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    {% if messages %}
+        <div class="error-messages">
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <p>Already have an account? <a href="{% url 'login' %}">Login!</a></p>
+</div>
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .login-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        margin-top: 400px;
+    }
+
+    h3 {
+        margin-top: 0; 
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    form label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    form button {
+        background-color: #ff6f61;
+        color: #ffffff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    form button:hover {
+        background-color: #e65c50;
+    }
+
+    form p {
+        font-size: 14px;
+    }
+
+    form a {
+        color: #ff6f61;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    form a:hover {
+        text-decoration: underline;
+    }
+
+    .error-messages {
+        margin-top: 15px;
+    }
+
+    .error-messages p {
+        font-size: 14px;
+        color: red;
+    }
+</style>
+
+<!-- Register Section End -->
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="{% url 'home' %}"><h3>Thrifts & Threads</h3></a>
+                    </div>
+                    <p>Where style meets sustainability! <br> Our online store brings you a collection of high quality jerseys alongside trending arrivals. Explore our collection today and join the movement towards a more stylish and sustainable future!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="footer__widget">
+                    <h6>Quick Links</h6>
+                    <ul>
+                        <li><a href="{% url 'shop' %}">Shop</a></li>
+                        <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="{% static 'contact.html' %}">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="footer__widget">
+                    <h6>Account</h6>
+                    <ul>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <li><a href="#">My Orders</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .footer {
+        width: 100%;
+        padding: 40px 0;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+        
+        .footer .footer__logo h3 {
+            color: #ecf0f1;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .footer__logo h3:hover {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        
+        .footer__about p {
+            margin-top: 10px;
+            color: #bdc3c7;
+        }
+        
+        .footer__widget h6 {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .footer__widget ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer__widget ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer__widget ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer__widget ul li a:hover {
+            color: #1abc9c; 
+        }
+        
+        </style>
+</footer>
+<!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

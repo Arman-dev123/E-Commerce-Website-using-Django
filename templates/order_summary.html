@@ -1,0 +1,34 @@
+{% block content %}
+    <h1>Order Summary</h1>
+
+    <p>Order ID: {{ order.id }}</p>
+    <p>Status: {{ order.status }}</p>
+    <p>Total Amount: ${{ order.total_amount }}</p>
+
+    <h2>Order Items</h2>
+    <ul>
+        {% for item in order_items %}
+            <li>{{ item.product_id }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+<div class="order-summary">
+    <h2>Order Summary</h2>
+    {% for product in product_details %}
+    <div class="cart-item">
+        <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="product-image" />
+        <div class="product-details">
+            <h3>{{ product.name }}</h3>
+            <p>Price: ${{ product.price }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="cart-total">
+        <h3>Total: ${{ total_price }}</h3>
+        <form method="post" action="{% url 'place_order' %}">
+            {% csrf_token %}
+            <button type="submit" class="primary-btn">Place Order</button>
+        </form>
+    </div>
+</div>
